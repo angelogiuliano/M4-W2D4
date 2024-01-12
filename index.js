@@ -98,7 +98,6 @@ let books = function () {
 
       for (let i = 0; i < notInterestedButtons.length; i++) {
         notInterestedButtons[i].addEventListener("click", function () {
-          console.log(this.classList)
           this.parentElement.classList.add("d-none")
         });
       }
