@@ -1,3 +1,4 @@
+// trovo gli elementi che mi serviranno e li porto dall'html in js
 const main = document.getElementById("main");
 const input = document.getElementById("input-search");
 let listaCarrelloHTML = document.getElementById("lista-carrello");
@@ -9,6 +10,7 @@ let books = function () {
       let listaCarrello = [];
       let libri = data;
 
+      // Funzione che filtra i libri ottenuti tramite la fetch se la ricerca ha +3 caratteri
       let filtraLibri = function (ricerca) {
         if (ricerca.length > 3) {
           main.innerHTML = "";
@@ -37,7 +39,9 @@ let books = function () {
           </div>
             `;
           });
-        } else {
+        } 
+        // se la ricerca dovesse essere cancellata e/o non dovesse più contenere 3+ caratteri, mostra di nuovo tutti i libri fetchati
+        else {
           libri.map((book) => {
             main.innerHTML += `
                 <div id=${book.asin} class="card d-block d-lg-2 d-md-3 d-sm-4" style="width: 18rem;">
@@ -63,6 +67,7 @@ let books = function () {
         }
       };
 
+      // map utilizzato per mostrare i libri all'apertura iniziale della pagina 
       libri.map((book) => {
         main.innerHTML += `
             <div id=${book.asin} class="card d-block d-lg-2 d-md-3 d-sm-4" style="width: 18rem;">
@@ -86,10 +91,12 @@ let books = function () {
         `;
       });
 
+      // EventListener dell'input search che chiama la funzione filtraLibri
       input.addEventListener("change", () => {
         filtraLibri(input.value);
       });
 
+      // Aggiunta degli event listener per aggiungere/rimuovere gli elementi dal carrello (con aggiunta/rimozione alla lista del carrello e degli stili)
       let cartButtons = document.getElementsByClassName("cart");
       let notInterestedButtons = document.getElementsByClassName("not-interested");
 
@@ -136,6 +143,7 @@ let books = function () {
         });
       }
 
+      // Tasto "non mi interessa"
       for (let i = 0; i < notInterestedButtons.length; i++) {
         notInterestedButtons[i].addEventListener("click", function () {
           this.parentElement.classList.add("d-none");
