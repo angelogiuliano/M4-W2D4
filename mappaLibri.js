@@ -28,7 +28,8 @@ export const mappaLibri = (result) => {
          </svg>
       </button>
       </div>
-    </div>`;
+    </div>
+    `;
   });
 
   aggiungiTastiConListener();

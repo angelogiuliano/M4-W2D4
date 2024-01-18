@@ -30,7 +30,8 @@ const books = async function () {
       });
 
       aggiungiTastiConListener();
-    });
+    })
+    .catch((err) => console.error(err))
 };
 
 books();
